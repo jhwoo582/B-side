@@ -1,96 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Pretendard, 'Apple SD Gothic Neo', sans-serif">
   <defs>
-    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#6f7686"/>
-    </marker>
-    <marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#e8a24a"/>
-    </marker>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#e8a24a" stop-opacity="0.12"/>
-      <stop offset="1" stop-color="#e8a24a" stop-opacity="0"/>
-    </radialGradient>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6B6F78"/></marker>
+    <marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#E8A24A"/></marker>
     <style>
-      .n { fill: #16181d; stroke: #2a2e36; stroke-width: 1; }
-      .k { fill: #5b6270; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; }
-      .t { fill: #eef0f3; font-size: 22px; font-weight: 600; }
-      .s { fill: #8b93a1; font-size: 15px; }
-      .h { fill: #8b93a1; font-size: 15px; font-weight: 600; }
-      .l { fill: #8b93a1; font-size: 13px; }
-      .e { stroke: #6f7686; stroke-width: 1.5; fill: none; }
-      .ea { stroke: #e8a24a; stroke-width: 1.8; fill: none; }
+      .c { fill: #17181C; stroke: #2A2D34; stroke-width: 1.2; }
+      .n { fill: #F5F5F7; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+      .d { fill: #9A9EA6; font-size: 18px; font-weight: 500; }
+      .m { fill: #F5F5F7; font-size: 18px; font-weight: 700; }
+      .s { fill: #9A9EA6; font-size: 16px; font-weight: 600; }
+      .e { stroke: #6B6F78; stroke-width: 2.5; fill: none; }
+      .ea { stroke: #E8A24A; stroke-width: 2.5; fill: none; }
+      .rule { stroke: #2A2D34; stroke-width: 1; }
     </style>
   </defs>
+  <rect width="1600" height="900" fill="#0E0F12"/>
 
-  <rect width="1600" height="900" fill="#0e0f12"/>
-  <ellipse cx="840" cy="320" rx="420" ry="260" fill="url(#glow)"/>
+  <text x="60" y="78" fill="#F5F5F7" font-size="38" font-weight="800" letter-spacing="-1">B-side · 멀티 에이전트 구조</text>
+  <text x="60" y="150" fill="#E8A24A" font-size="20" font-weight="700">밤 · 매일 04:00 자동 실행</text>
 
-  <text x="60" y="84" fill="#eef0f3" font-size="34" font-weight="700">B-side</text>
-  <text x="182" y="84" fill="#8b93a1" font-size="18">근거를 달고 오는 디깅 에이전트</text>
+  <!-- 카드 5개: x 60 368 676 984 1292, w 268, y 180~440 -->
+  <rect class="c" x="60" y="180" width="268" height="260" rx="16"/>
+  <text class="n" x="86" y="230">시드 선정</text>
+  <text class="d" x="86" y="266">좋아요와 큐에서</text>
+  <text class="d" x="86" y="292">오늘 찾을 아티스트</text>
+  <line class="rule" x1="86" y1="370" x2="302" y2="370"/>
+  <text class="m" x="86" y="404">코드</text>
 
-  <!-- 밤 -->
-  <text x="60" y="160" class="h">밤 — 에이전트가 파고 기록한다</text>
+  <rect class="c" x="368" y="180" width="268" height="260" rx="16"/>
+  <text class="n" x="394" y="230">익명화</text>
+  <text class="d" x="394" y="266">개인 사정은 지우고</text>
+  <text class="d" x="394" y="292">방향만 넘긴다</text>
+  <line class="rule" x1="394" y1="370" x2="610" y2="370"/>
+  <text class="m" x="394" y="400">Gemma-4-31B</text>
+  <text fill="#5FBF8F" font-size="16" font-weight="700" x="394" y="424">로컬</text>
 
-  <rect x="580" y="186" width="530" height="270" rx="18" fill="#e8a24a" fill-opacity="0.035" stroke="#e8a24a" stroke-opacity="0.28" stroke-dasharray="5 6"/>
-  <text x="845" y="444" text-anchor="middle" fill="#c9924a" font-size="13">개인 정보 없이, 공개 자료만 다루는 구역</text>
+  <rect x="676" y="180" width="268" height="260" rx="16" fill="#1C1914" stroke="#E8A24A" stroke-width="2"/>
+  <text class="n" x="702" y="230" fill="#E8A24A" style="fill:#E8A24A">리서처</text>
+  <text class="s" x="812" y="229">ReAct</text>
+  <text class="d" x="702" y="266">도구를 골라</text>
+  <text class="d" x="702" y="292">여러 홉 탐색</text>
+  <line x1="702" y1="370" x2="918" y2="370" stroke="#4A3A22"/>
+  <text class="m" x="702" y="400">DeepSeek-V4-Pro</text>
+  <text fill="#E8A24A" font-size="16" font-weight="700" x="702" y="424">API · 공개 자료만</text>
 
-  <rect class="n" x="60" y="250" width="230" height="150" rx="14"/>
-  <text class="k" x="84" y="284">01</text>
-  <text class="t" x="84" y="318">내 취향</text>
-  <text class="s" x="84" y="348">YouTube Music 좋아요</text>
-  <text class="s" x="84" y="372">+ 지난밤 고른 방향</text>
+  <rect class="c" x="984" y="180" width="268" height="260" rx="16"/>
+  <text class="n" x="1010" y="230">검수</text>
+  <text class="d" x="1010" y="266">원문 글자 대조 후</text>
+  <text class="d" x="1010" y="292">근거 판정</text>
+  <line class="rule" x1="1010" y1="370" x2="1226" y2="370"/>
+  <text class="m" x="1010" y="400">코드 + Gemma-4-31B</text>
+  <text fill="#5FBF8F" font-size="16" font-weight="700" x="1010" y="424">로컬 · 다른 계열</text>
 
-  <rect class="n" x="330" y="250" width="210" height="150" rx="14"/>
-  <text class="k" x="354" y="284">02</text>
-  <text class="t" x="354" y="318">익명화</text>
-  <text class="s" x="354" y="348">개인 사정은 지우고</text>
-  <text class="s" x="354" y="372">방향만 넘긴다</text>
+  <rect class="c" x="1292" y="180" width="268" height="260" rx="16"/>
+  <text class="n" x="1318" y="230">기록</text>
+  <text class="d" x="1318" y="266">브리프 · 플레이리스트</text>
+  <text class="d" x="1318" y="292">· 위키</text>
+  <line class="rule" x1="1318" y1="370" x2="1534" y2="370"/>
+  <text class="m" x="1318" y="400">Gemma-4-31B</text>
+  <text fill="#5FBF8F" font-size="16" font-weight="700" x="1318" y="424">로컬</text>
 
-  <rect x="610" y="250" width="250" height="150" rx="14" fill="#18191e" stroke="#e8a24a" stroke-opacity="0.55"/>
-  <text class="k" x="634" y="284">03</text>
-  <text class="t" x="634" y="318">리서처</text>
-  <text class="s" x="634" y="348">도구를 직접 골라</text>
-  <text class="s" x="634" y="372">여러 홉을 파고든다</text>
+  <!-- 카드 사이 화살표 -->
+  <path class="e" d="M328 300 H364" marker-end="url(#a)"/>
+  <path class="ea" d="M636 300 H672" marker-end="url(#ac)"/>
+  <path class="e" d="M944 290 H980" marker-end="url(#a)"/>
+  <path class="e" d="M984 330 H948" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <text class="s" x="964" y="360" text-anchor="middle" style="font-size:14px">반려</text>
+  <path class="ea" d="M1252 300 H1288" marker-end="url(#ac)"/>
 
-  <rect class="n" x="890" y="250" width="190" height="150" rx="14"/>
-  <text class="k" x="914" y="284">04</text>
-  <text class="t" x="914" y="318">검수</text>
-  <text class="s" x="914" y="348">인용이 원문에</text>
-  <text class="s" x="914" y="372">글자 그대로 있나</text>
+  <!-- 도구 -->
+  <path class="e" d="M810 440 V476" marker-end="url(#a)"/>
+  <rect x="480" y="480" width="660" height="64" rx="12" fill="#14151A" stroke="#3A3E46"/>
+  <text x="504" y="519" fill="#E8A24A" font-size="18" font-weight="800">도구 6개</text>
+  <text x="598" y="519" fill="#C9CDD4" font-size="16" font-weight="600">웹 검색 · MusicBrainz · 평론 후보 · 인터뷰 언급 · 새로움 확인 · YouTube Music</text>
 
-  <rect class="n" x="1150" y="250" width="390" height="150" rx="14"/>
-  <text class="k" x="1174" y="284">05</text>
-  <text class="t" x="1174" y="318">브리프 · 플레이리스트</text>
-  <text class="s" x="1174" y="348">후보마다 발견 경로 · 원문 인용 · 출처</text>
-  <text class="s" x="1174" y="372">위키에 기록이 쌓인다</text>
+  <!-- RAG -->
+  <path class="e" d="M810 544 V636" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <text class="s" x="826" y="598">읽은 원문 저장</text>
+  <rect class="c" x="676" y="640" width="434" height="120" rx="16"/>
+  <text x="702" y="680" fill="#F5F5F7" font-size="24" font-weight="800">출처 색인 (RAG)</text>
+  <text class="d" x="702" y="710">읽은 원문 448쪽 · 약 6천 조각</text>
+  <text class="d" x="702" y="736">e5 임베딩(로컬) + 한글 BM25 → RRF</text>
 
-  <path class="e" d="M290 325 H326" marker-end="url(#a)"/>
-  <path class="ea" d="M540 325 H606" marker-end="url(#ac)"/>
-  <path class="e" d="M860 325 H886" marker-end="url(#a)"/>
-  <path class="ea" d="M1080 325 H1146" marker-end="url(#ac)"/>
-  <text x="1113" y="312" text-anchor="middle" fill="#e8a24a" font-size="13">통과</text>
-  <path class="e" d="M985 250 V218 H735 V246" stroke-dasharray="4 5" marker-end="url(#a)"/>
-  <text x="860" y="210" text-anchor="middle" class="l">반려되면 다시 조사</text>
+  <!-- 앱 -->
+  <path class="e" d="M1426 440 V636" marker-end="url(#a)"/>
+  <path class="e" d="M1110 700 H1166" marker-end="url(#a)"/>
+  <text class="s" x="1138" y="690" text-anchor="middle" style="font-size:14px">인용</text>
+  <rect x="1170" y="640" width="390" height="120" rx="16" fill="#17181C" stroke="#E8A24A" stroke-opacity="0.6" stroke-width="1.5"/>
+  <text x="1196" y="680" fill="#F5F5F7" font-size="24" font-weight="800">디깅 앱 · 아침</text>
+  <text class="d" x="1196" y="710">근거 카드 · 디깅 맵 · 오늘 밤 큐</text>
+  <text class="d" x="1196" y="736">점원 챗 (Gemma-4-31B, 출처 인용)</text>
 
-  <!-- 아침 -->
-  <line x1="60" y1="520" x2="1540" y2="520" stroke="#1f2228"/>
-  <text x="60" y="574" class="h">아침 — 사람은 듣고 판단만 한다</text>
+  <!-- 가드레일 -->
+  <rect x="150" y="640" width="470" height="120" rx="16" fill="none" stroke="#2A2D34" stroke-dasharray="6 5"/>
+  <text x="176" y="680" fill="#F5F5F7" font-size="20" font-weight="800">무인 실행 가드레일</text>
+  <text class="d" x="176" y="710">예산 상한 도구 140회 · $0.8 · 20분</text>
+  <text class="d" x="176" y="736">계정 쓰기는 새 플레이리스트만 · 감사 로그</text>
 
-  <rect class="n" x="610" y="620" width="470" height="130" rx="14"/>
-  <text class="t" x="634" y="666">출처 색인 (RAG)</text>
-  <text class="s" x="634" y="698">밤사이 읽은 원문을 모아 두고</text>
-  <text class="s" x="634" y="722">질문에 근거로 꺼내 쓴다</text>
-
-  <rect x="1150" y="620" width="390" height="130" rx="14" fill="#18191e" stroke="#e8a24a" stroke-opacity="0.55"/>
-  <text class="t" x="1174" y="666">디깅 앱</text>
-  <text class="s" x="1174" y="698">디깅 맵에서 LP를 넘겨 듣고</text>
-  <text class="s" x="1174" y="722">점원에게 "왜 이걸 골랐어?"</text>
-
-  <path class="e" d="M735 456 V616" stroke-dasharray="4 5" marker-end="url(#a)"/>
-  <text x="747" y="545" class="l">읽은 원문</text>
-  <path class="e" d="M1345 400 V616" marker-end="url(#a)"/>
-  <path class="e" d="M1080 685 H1146" marker-end="url(#a)"/>
-
-  <path class="ea" d="M1345 750 V812 H34 V325 H56" marker-end="url(#ac)"/>
-  <text x="760" y="840" text-anchor="middle" fill="#e8a24a" font-size="14">마음에 든 방향을 큐에 담으면 다음 밤 디깅의 출발점이 된다</text>
+  <!-- 사람 피드백 루프 -->
+  <path class="ea" d="M1365 760 V830 H100 V446" marker-end="url(#ac)"/>
+  <text x="732" y="866" fill="#E8A24A" font-size="20" font-weight="700" text-anchor="middle">사람이 고른 방향(오늘 밤 큐)이 다음 날 밤의 시드로</text>
 </svg>

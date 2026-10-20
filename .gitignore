@@ -1,0 +1,26 @@
+# 시크릿 (API 키, YouTube Music 쿠키, 연락처)
+.secrets
+.env
+.env.*
+
+# 개인 데이터: 청취 기록에서 나온 취향 지도·브리프·위키·로그, 친구 지도, 수집 원문
+logs/
+briefs/
+wiki/*
+!wiki/.gitkeep
+data/*
+!data/kma_nominees.json
+fixtures/
+bench/
+
+# 환경·빌드
+.venv/
+__pycache__/
+node_modules/
+dist/
+.DS_Store
+.claude/
+
+# 버린 디자인 시안
+app/web-zine/
+app/web-record/

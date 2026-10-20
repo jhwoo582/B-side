@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* 레코드 가게 앱. 화면의 색은 지금 손에 든 판의 앨범아트에서 온다(--album*, albumColor.ts가 바꾼다).
+   면은 아주 옅은 흰색 유리, 선은 1px 흰색 8%, 글자는 흰색 100 / 62 / 40 세 단계. */
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* 라이너 노트: 제목·인용은 한글 세리프, 숫자·영문 장식은 이탤릭 세리프 */
+  --font-serif: "Hahmlet", "Pretendard Variable", serif;
+  --font-display: "Instrument Serif", "Hahmlet", serif;
+  --color-accent: rgb(var(--album));
+  --color-fg: #ffffff;
+  --color-fg-2: rgb(255 255 255 / 0.62);
+  --color-fg-3: rgb(255 255 255 / 0.4);
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-fill: rgb(255 255 255 / 0.05);
+  --color-fill-2: rgb(255 255 255 / 0.09);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: dark;
+  --album: 255 168 140;
+  --album-base: 22 14 18;
+  --album-c1: 120 40 60;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.012em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+}
+
+@layer components {
+  /* 유리 면: 앨범색 배경이 은은하게 비친다 */
+  .surface {
+    background: rgb(255 255 255 / 0.045);
+    border: 1px solid rgb(255 255 255 / 0.075);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 20px 50px -30px rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(28px) saturate(1.5);
+    -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  }
+  .bar {
+    background: rgb(12 12 12 / 0.62);
+    backdrop-filter: blur(40px) saturate(1.8);
+    -webkit-backdrop-filter: blur(40px) saturate(1.8);
+  }
+
+  /* 판: 홈, 빛 반사, 라벨 */
+  .vinyl {
+    border-radius: 9999px;
+    background:
+      conic-gradient(from 25deg, transparent 0 9%, rgb(255 255 255 / 0.14) 13%, transparent 19% 54%, rgb(255 255 255 / 0.09) 59%, transparent 65%),
+      repeating-radial-gradient(circle, #060606 0 1.2px, #161616 1.6px 2.5px);
+    box-shadow: 0 30px 60px -25px rgb(0 0 0 / 0.9), inset 0 0 0 1px rgb(255 255 255 / 0.04);
+  }
+
+  /* 랙 바닥에 비친 슬리브 */
+  .reflect { -webkit-box-reflect: below 4px linear-gradient(transparent 64%, rgb(255 255 255 / 0.14)); }
+
+  .scroll-y { overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgb(255 255 255 / 0.18) transparent; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* 찾는 중 글자 위로 빛이 지나간다 */
+  .shimmer {
+    background: linear-gradient(90deg, rgb(255 255 255 / 0.45) 0 40%, #fff 50%, rgb(255 255 255 / 0.45) 60% 100%) 0 0 / 250% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmer 1.6s linear infinite;
+  }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 1.8s linear infinite; }
+@keyframes drift { to { transform: rotate(360deg) scale(1.5); } }
+@keyframes shimmer { to { background-position: -150% 0; } }
+
+:focus-visible { outline: 2px solid rgb(var(--album)); outline-offset: 2px; }
+::selection { background: rgb(var(--album) / 0.6); color: #000; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* 시리 오브 (점원이 찾는 중) — 원래 앱 그대로 */
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-breathe { 0%, 100% { opacity: .55; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.12); } }
+.orb-spin { animation: orb-spin 2.6s linear infinite; }
+.orb-breathe { animation: orb-breathe 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .orb-spin, .orb-breathe { animation: none; } }
+
+@keyframes fade-in { from { opacity: 0; } }

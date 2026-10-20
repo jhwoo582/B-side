@@ -1,4 +1,4 @@
-/** Crate Digging — 레코드 가게 앱 시안. 기존 웹앱(app/web)과 같은 API를 쓰고 화면만 다르다.
+/** B-side — 레코드 가게 앱 시안. 기존 웹앱(app/web)과 같은 API를 쓰고 화면만 다르다.
  *  사이드바 | 오늘 들어온 판(칸 탭 · 랙 · 고른 판 상세) | 점원 · 아래엔 재생 바, 펼치면 턴테이블.
  *  레코드샵은 장식이 아니라 구조로: 크레이트의 칸막이 = 칸 탭, 비닐 겉커버, 내 봉투. */
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -126,7 +126,7 @@ function Shop() {
         <main className="scroll-y relative min-w-0 flex-1">
           {/* 모바일 머리 */}
           <div className="flex h-14 items-center justify-between px-4 lg:hidden">
-            <span className="flex items-center gap-2"><Logo size={22} /><span className="text-[15px] font-bold tracking-[-0.03em]">Crate Digging</span></span>
+            <span className="flex items-center gap-2"><Logo size={22} /><span className="text-[15px] font-bold tracking-[-0.03em]">B-side</span></span>
             <span className="flex gap-2"><button onClick={() => setView('map')} aria-label="디깅 맵" className="grid h-9 w-9 place-items-center rounded-full bg-fill"><Orbit size={18} /></button><button onClick={() => openClerk()} aria-label="점원에게 묻기" className="grid h-9 w-9 place-items-center rounded-full bg-fill"><MessageCircle size={18} /></button></span>
           </div>
 
@@ -260,7 +260,7 @@ function Bag({ items, date, open, setOpen, onPick }: { items: Candidate[]; date:
             {/* 감열지: 아래 가장자리만 톱니 */}
             <div className="bg-[#f4f3f0] px-5 pb-7 pt-5 text-[#141414] [mask:conic-gradient(from_-45deg_at_bottom,#0000,#000_1deg_89deg,#0000_90deg)_bottom/12px_51%_repeat-x,linear-gradient(#000_0_0)_top/100%_calc(100%-6px)_no-repeat]">
               <div className="flex items-baseline justify-between text-[12px] text-black/50">
-                <span className="font-semibold text-black">Crate Digging</span><span className="tabular-nums">{date.replace(/-/g, '.')}</span>
+                <span className="font-semibold text-black">B-side</span><span className="tabular-nums">{date.replace(/-/g, '.')}</span>
               </div>
               <p className="mt-0.5 text-[12px] text-black/50">더 듣고 싶은 음악</p>
               <div className="my-3 border-t border-dashed border-black/30" />

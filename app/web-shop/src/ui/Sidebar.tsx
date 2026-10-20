@@ -12,7 +12,7 @@ export function Sidebar({ brief, dates, taste, view, onView, onPickDate, onClerk
     <aside className="hidden w-[256px] shrink-0 flex-col border-r border-line bg-black/20 lg:flex">
       <div className="flex h-16 items-center gap-2.5 px-5">
         <Logo size={24} />
-        <span className="text-[16px] font-bold tracking-[-0.03em]">Crate Digging</span>
+        <span className="text-[16px] font-bold tracking-[-0.03em]">B-side</span>
       </div>
 
       <nav className="px-3" aria-label="가게">

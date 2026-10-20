@@ -1,8 +1,30 @@
-# B-side
+<p align="center">
+  <img src="docs/banner.png" alt="B-side — 근거를 달고 오는 디깅 에이전트">
+</p>
 
-**근거를 달고 오는 디깅 에이전트.** 음악 디깅에서 귀찮은 두 가지, 정보 수집과 기록을 에이전트가 밤사이 대신하고, 사람은 아침에 듣고 판단만 한다.
+<p align="center">
+  <a href="https://jhwoo582.github.io/B-side/"><b>프로젝트 페이지</b></a> ·
+  <a href="#2-아키텍처">아키텍처</a> ·
+  <a href="#4-현재-결과">결과</a> ·
+  <a href="#5-실행">실행</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/React-Three.js-20232A?logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/Agent-ReAct-e8a24a" alt="ReAct">
+  <img src="https://img.shields.io/badge/RAG-e5%20%2B%20BM25-e8a24a" alt="RAG">
+</p>
+
+음악 디깅에서 귀찮은 두 가지, **정보 수집과 기록**을 에이전트가 밤사이 대신하고, 사람은 아침에 **듣고 판단만** 한다.
+추천마다 발견 경로와 원문 인용이 붙고, 인용은 출처 원문과 글자 그대로 대조해 통과한 것만 내놓는다.
 
 > 실전 AI 에이전트 시스템 설계·구축 (STS2022, 2026-2학기) MVP 보고서
+
+<!-- 데모 GIF: docs/demo.gif 를 넣으면 아래 줄의 주석을 푼다
+<p align="center"><img src="docs/demo.gif" alt="데모" width="100%"></p>
+-->
 
 ---
 

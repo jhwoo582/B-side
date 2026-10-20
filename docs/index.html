@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B-side — 근거를 달고 오는 디깅 에이전트</title>
+<meta name="description" content="밤사이 에이전트가 음악을 파고 기록하고, 아침에 사람은 듣고 판단만 한다. 모든 추천에 원문 근거가 붙는다.">
+<meta property="og:title" content="B-side — 근거를 달고 오는 디깅 에이전트">
+<meta property="og:description" content="밤사이 에이전트가 파고 기록하고, 아침에 당신은 듣고 판단만.">
+<meta property="og:image" content="https://jhwoo582.github.io/B-side/banner.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #0e0f12;
+    --surface: #16181d;
+    --line: #23262d;
+    --text: #eef0f3;
+    --muted: #8b93a1;
+    --faint: #5b6270;
+    --accent: #e8a24a;
+    --local: #5fbf8f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: Pretendard, 'Apple SD Gothic Neo', system-ui, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
+        background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-weight: 800; letter-spacing: -0.02em; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+  .logo i { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle, var(--bg) 0 2px, var(--accent) 3px 6px, #1b1c21 7px); }
+  nav ul { display: flex; gap: 28px; list-style: none; font-size: 14px; color: var(--muted); }
+  nav ul a:hover { color: var(--text); }
+
+  .hero { position: relative; overflow: hidden; padding: 120px 0 110px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 40px; }
+  .eyebrow { color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 20px; }
+  h1 { font-size: clamp(56px, 9vw, 108px); line-height: 0.95; font-weight: 800; letter-spacing: -0.04em; }
+  .tag { font-size: clamp(20px, 2.4vw, 28px); font-weight: 500; color: #c9ced6; margin-top: 22px; }
+  .lead { color: var(--muted); font-size: 17px; margin-top: 18px; max-width: 30em; }
+  .cta { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+  .btn { padding: 12px 20px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1px solid var(--line); transition: border-color .2s, background .2s; }
+  .btn.primary { background: var(--accent); color: #1a1206; border-color: var(--accent); }
+  .btn.primary:hover { background: #f0b25f; }
+  .btn:not(.primary):hover { border-color: var(--faint); }
+
+  .disc-wrap { position: relative; aspect-ratio: 1; max-width: 460px; justify-self: end; width: 100%; }
+  .disc-wrap::before { content: ""; position: absolute; inset: -18%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,162,74,.28), rgba(232,162,74,.06) 50%, transparent 70%); }
+  .disc { position: absolute; inset: 0; border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--bg) 0 1.3%, var(--accent) 1.6% 32%, rgba(0,0,0,.25) 32.4%, transparent 33%),
+      repeating-radial-gradient(circle, #15161a 0 3px, #1d1f25 3.5px 4px),
+      #121317;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55), inset 0 0 0 1px #262830;
+    animation: spin 9s linear infinite; }
+  .disc::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(from 30deg, transparent 0 18%, rgba(255,255,255,.07) 25%, transparent 32% 68%, rgba(255,255,255,.05) 75%, transparent 82%); }
+  .label-text { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+  .label-text span { font-weight: 800; color: #1a1206; font-size: clamp(22px, 3vw, 34px); transform: translateY(-38%); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .disc { animation: none; } html { scroll-behavior: auto; } }
+
+  section { padding: 96px 0; border-top: 1px solid var(--line); }
+  .sec-k { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 14px; }
+  h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; max-width: 22em; }
+  .sub { color: var(--muted); font-size: 17px; margin-top: 14px; max-width: 40em; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+  .panel h3 { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .panel h3 small { font-size: 13px; color: var(--faint); font-weight: 600; }
+  .steps { list-style: none; margin-top: 22px; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 14px 0 14px 44px; border-top: 1px solid var(--line); color: #c9ced6; }
+  .steps li:first-child { border-top: 0; }
+  .steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 15px; color: var(--faint); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .steps li b { color: var(--text); font-weight: 600; }
+  .steps li p { color: var(--muted); font-size: 14.5px; margin-top: 2px; }
+
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 48px; }
+  .principles div { background: var(--bg); padding: 32px 28px; }
+  .principles .n { color: var(--accent); font-size: 13px; font-weight: 700; }
+  .principles h3 { font-size: 19px; margin: 10px 0 8px; font-weight: 700; }
+  .principles p { color: var(--muted); font-size: 15px; }
+
+  figure.arch { margin-top: 48px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  figure.arch img { display: block; width: 100%; height: auto; }
+
+  .card { margin-top: 48px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 36px; position: relative; overflow: hidden; }
+  .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+  .chip { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; background: #2e2414; color: var(--accent); }
+  .card h3 { font-size: 26px; font-weight: 700; margin-top: 14px; letter-spacing: -0.01em; }
+  .card h3 span { color: var(--muted); font-weight: 500; }
+  .path { margin-top: 16px; font-size: 15px; color: #c9ced6; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .path em { font-style: normal; color: var(--accent); font-size: 13px; border: 1px solid #4a3a22; padding: 1px 8px; border-radius: 6px; }
+  blockquote { margin-top: 22px; padding-left: 18px; border-left: 1px solid var(--faint); font-size: 17px; color: var(--text); line-height: 1.7; }
+  .src { margin-top: 14px; font-size: 13.5px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .ok { color: var(--local); font-weight: 600; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+  .stat { border-top: 1px solid var(--line); padding-top: 20px; }
+  .stat b { display: block; font-size: clamp(34px, 4.4vw, 52px); font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stat b small { font-size: .45em; color: var(--muted); font-weight: 600; margin-left: 2px; }
+  .stat span { color: var(--muted); font-size: 14.5px; }
+  .note { color: var(--faint); font-size: 13.5px; margin-top: 28px; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--faint); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 860px) {
+    nav ul { display: none; }
+    .hero { padding: 72px 0 64px; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .disc-wrap { max-width: 300px; justify-self: center; order: -1; }
+    .split, .principles { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    section { padding: 72px 0; }
+    .panel, .card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>B-side</a>
+    <ul>
+      <li><a href="#how">작동 방식</a></li>
+      <li><a href="#principles">원칙</a></li>
+      <li><a href="#example">예시</a></li>
+      <li><a href="#results">결과</a></li>
+      <li><a href="https://github.com/jhwoo582/B-side">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">디깅 에이전트</p>
+      <h1>B-side</h1>
+      <p class="tag">근거를 달고 오는 디깅 에이전트</p>
+      <p class="lead">밤사이 에이전트가 인터뷰·리뷰·크레딧을 파고 기록합니다. 아침에 당신은 듣고 판단만 하면 됩니다. 모든 추천에는 발견 경로와 원문 인용이 붙습니다.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/jhwoo582/B-side">GitHub에서 보기</a>
+        <a class="btn" href="#how">작동 방식</a>
+      </div>
+    </div>
+    <div class="disc-wrap" aria-hidden="true">
+      <div class="disc"></div>
+      <div class="label-text"><span>B</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <p class="sec-k">작동 방식</p>
+    <h2>귀찮은 건 에이전트가, 즐거운 건 사람이.</h2>
+    <p class="sub">디깅에서 정말 귀찮은 건 여러 탭을 열어 자료를 모으는 일과, 어디서 찾았는지 기록하는 일입니다. B-side는 이 두 가지를 밤사이 대신합니다.</p>
+    <div class="split">
+      <div class="panel">
+        <h3>밤 <small>에이전트가 파고 기록한다</small></h3>
+        <ol class="steps">
+          <li><b>취향에서 출발</b><p>YouTube Music 좋아요와 지난밤 고른 방향에서 시드를 고릅니다.</p></li>
+          <li><b>익명화</b><p>개인 사정은 지우고, 어떤 방향으로 팔지만 넘깁니다.</p></li>
+          <li><b>리서처가 파고든다</b><p>MusicBrainz, 웹, 평론 데이터를 직접 골라 여러 홉을 따라갑니다.</p></li>
+          <li><b>검수</b><p>인용이 출처 원문에 글자 그대로 있는지 다시 가져와 대조합니다.</p></li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>아침 <small>사람은 듣고 판단만 한다</small></h3>
+        <ol class="steps">
+          <li><b>새 플레이리스트</b><p>YouTube Music에 오늘의 디깅이 담겨 있습니다.</p></li>
+          <li><b>디깅 맵</b><p>LP를 넘겨 보며 어디서 이어졌는지, 무슨 근거인지 확인합니다.</p></li>
+          <li><b>점원에게 묻기</b><p>"왜 이걸 골랐어?" 하면 밤사이 읽은 원문을 인용해 답합니다.</p></li>
+          <li><b>오늘 밤 큐</b><p>마음에 든 방향을 담으면 다음 밤 디깅의 출발점이 됩니다.</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <p class="sec-k">원칙</p>
+    <h2>그럴듯한 추천보다, 확인할 수 있는 추천.</h2>
+    <div class="principles">
+      <div>
+        <p class="n">01</p>
+        <h3>근거는 원문 그대로</h3>
+        <p>인용은 출처를 캐시 없이 다시 가져와 글자 단위로 대조합니다. 맞지 않으면 리서처에게 돌려보냅니다.</p>
+      </div>
+      <div>
+        <p class="n">02</p>
+        <h3>생성과 검증은 따로</h3>
+        <p>같은 모델이 이유까지 만들면 추천을 먼저 정하고 이유를 지어냅니다. 검수는 리서처의 설명이 아니라 원문만 봅니다.</p>
+      </div>
+      <div>
+        <p class="n">03</p>
+        <h3>개인 데이터는 경계 안에</h3>
+        <p>개인 정보를 다루는 역할은 로컬 모델이 맡고, 외부 API에는 익명화된 방향과 공개 자료만 보냅니다.</p>
+      </div>
+    </div>
+    <figure class="arch">
+      <img src="architecture.png" alt="B-side 아키텍처: 내 취향 → 익명화 → 리서처 ⇄ 검수 → 브리프·플레이리스트 → 디깅 앱, 고른 방향이 다음 밤의 출발점이 된다" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<section id="example">
+  <div class="wrap">
+    <p class="sec-k">실제 브리프 한 장</p>
+    <h2>왜 이 음악인지, 어디서 왔는지.</h2>
+    <div class="card">
+      <span class="chip">새 아티스트</span>
+      <h3>Wilma Archer <span>— Every Evening</span></h3>
+      <div class="path">Nilüfer Yanya <em>협업</em> → Wilma Archer</div>
+      <blockquote>"Along with producer Wilma Archer (My Method Actor marks the first time Yanya has worked with just one collaborator across an album), Yanya has created a collection of songs that both grasp at the opacity of what is to come and revel in the freedom of letting go."</blockquote>
+      <div class="src">
+        <span>The Fader 기사</span>
+        <span class="ok">✓ 원문 대조 통과</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <p class="sec-k">결과</p>
+    <h2>일주일 동안 매일 밤 돌려 봤습니다.</h2>
+    <div class="stats">
+      <div class="stat"><b>7<small>회</small></b><span>야간 실행</span></div>
+      <div class="stat"><b>40<small>명</small></b><span>새로 찾은 아티스트</span></div>
+      <div class="stat"><b>100<small>%</small></b><span>브리프 인용의 원문 일치</span></div>
+      <div class="stat"><b>$0.37</b><span>1회 평균 비용 · 약 17분</span></div>
+    </div>
+    <p class="note">2026-10-12 ~ 10-20 기준. 글자가 다른 인용 2건은 검수에서 걸러져 브리프에 실리지 않았습니다.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>실전 AI 에이전트 시스템 설계·구축 (STS2022, 2026-2학기)</span>
+    <a href="https://github.com/jhwoo582/B-side">github.com/jhwoo582/B-side</a>
+  </div>
+</footer>
+
+</body>
+</html>

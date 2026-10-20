@@ -155,6 +155,6 @@
 <rect x="1110.5" y="72.5" width="415" height="415" rx="6" fill="none" stroke="#fff" stroke-opacity="0.07"/>
 <rect x="1110" y="72" width="10" height="416" fill="#000" fill-opacity="0.35"/>
 <rect x="0" y="0" width="160" height="560" fill="url(#fadeL)" opacity="0"/>
-<text x="92" y="262" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">옆에 두는</text>
-<text x="92" y="356" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">디깅 <tspan fill="#e8a24a">에이전트</tspan></text>
+<text x="92" y="262" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">Your digging <tspan fill="#e8a24a">agent</tspan>,</text>
+<text x="92" y="356" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">always B-side you.</text>
 </svg>

@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7a8292"/>
+    </marker>
+    <marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e8a24a"/>
+    </marker>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8a24a" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#e8a24a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .n { fill: #16181d; stroke: #2a2e36; stroke-width: 1; }
+      .t { fill: #eef0f3; font-size: 17px; font-weight: 600; }
+      .s { fill: #8b93a1; font-size: 13px; }
+      .h { fill: #5b6270; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+      .l { fill: #8b93a1; font-size: 12px; }
+      .e { stroke: #7a8292; stroke-width: 1.4; fill: none; }
+      .pill { fill: #1d2027; stroke: #30343d; stroke-width: 1; }
+      .pt { fill: #c9ced6; font-size: 13px; }
+      .chip-t { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="920" fill="#0e0f12"/>
+  <ellipse cx="860" cy="330" rx="420" ry="300" fill="url(#glow)"/>
+
+  <!-- 제목 -->
+  <text x="60" y="78" fill="#eef0f3" font-size="34" font-weight="700" letter-spacing="-0.01em">B-side</text>
+  <text x="182" y="78" fill="#8b93a1" font-size="17">근거를 달고 오는 디깅 에이전트 · 아키텍처</text>
+
+  <!-- 범례 -->
+  <g transform="translate(1110 60)">
+    <rect width="52" height="20" rx="10" fill="#14281f"/><text x="26" y="14" text-anchor="middle" class="chip-t" fill="#5fbf8f">LOCAL</text>
+    <text x="60" y="14.5" class="l">개인 데이터 · Gemma-4-31B</text>
+    <rect x="232" width="40" height="20" rx="10" fill="#2e2414"/><text x="252" y="14" text-anchor="middle" class="chip-t" fill="#e8a24a">API</text>
+    <text x="280" y="14.5" class="l">공개 데이터만</text>
+    <rect x="370" width="50" height="20" rx="10" fill="#22252c"/><text x="395" y="14" text-anchor="middle" class="chip-t" fill="#a3aab6">CODE</text>
+  </g>
+
+  <!-- 열 머리 -->
+  <text x="60" y="146" class="h">입력</text>
+  <text x="340" y="146" class="h">준비</text>
+  <text x="640" y="146" class="h">조사 · 검증</text>
+  <text x="1140" y="146" class="h">산출물</text>
+  <line x1="60" y1="626" x2="1540" y2="626" stroke="#1f2228"/>
+  <text x="300" y="666" class="h">아침 · 사람은 듣고 판단만</text>
+
+  <!-- 개인 데이터 경계 -->
+  <line x1="600" y1="160" x2="600" y2="600" stroke="#5fbf8f" stroke-opacity="0.55" stroke-dasharray="4 6"/>
+  <text x="600" y="606" text-anchor="middle" fill="#5fbf8f" font-size="12" opacity="0.85">개인 데이터 경계</text>
+
+  <!-- 입력 -->
+  <rect class="n" x="60" y="200" width="220" height="84" rx="10"/>
+  <text class="t" x="80" y="236">YouTube Music</text>
+  <text class="s" x="80" y="260">청취 기록 · 좋아요</text>
+
+  <rect class="n" x="60" y="330" width="220" height="84" rx="10"/>
+  <text class="t" x="80" y="366">디깅 위키</text>
+  <text class="s" x="80" y="390">지난 발견 · 오늘 밤 큐</text>
+
+  <!-- 준비 -->
+  <rect class="n" x="340" y="200" width="220" height="84" rx="10"/>
+  <text class="t" x="360" y="236">시드 선정</text>
+  <text class="s" x="360" y="260">최근 좋아요 + 큐</text>
+  <rect x="496" y="212" width="50" height="20" rx="10" fill="#22252c"/><text x="521" y="226" text-anchor="middle" class="chip-t" fill="#a3aab6">CODE</text>
+
+  <rect class="n" x="340" y="330" width="220" height="84" rx="10"/>
+  <text class="t" x="360" y="366">익명화</text>
+  <text class="s" x="360" y="390">개인 사정은 지우고 방향만</text>
+  <rect x="494" y="342" width="52" height="20" rx="10" fill="#14281f"/><text x="520" y="356" text-anchor="middle" class="chip-t" fill="#5fbf8f">LOCAL</text>
+
+  <!-- 리서처 -->
+  <rect x="640" y="170" width="440" height="250" rx="12" fill="#17191f" stroke="#e8a24a" stroke-opacity="0.45"/>
+  <text class="t" x="664" y="206" font-size="19">리서처 · ReAct</text>
+  <rect x="1016" y="188" width="40" height="20" rx="10" fill="#2e2414"/><text x="1036" y="202" text-anchor="middle" class="chip-t" fill="#e8a24a">API</text>
+  <text class="s" x="664" y="232">DeepSeek-V4-Pro · 생각 → 도구 → 관찰 반복</text>
+  <g>
+    <rect class="pill" x="664" y="254" width="128" height="34" rx="8"/><text class="pt" x="728" y="276" text-anchor="middle">MusicBrainz</text>
+    <rect class="pill" x="802" y="254" width="128" height="34" rx="8"/><text class="pt" x="866" y="276" text-anchor="middle">웹 검색 · 원문</text>
+    <rect class="pill" x="940" y="254" width="116" height="34" rx="8"/><text class="pt" x="998" y="276" text-anchor="middle">평론 후보</text>
+    <rect class="pill" x="664" y="298" width="128" height="34" rx="8"/><text class="pt" x="728" y="320" text-anchor="middle">인터뷰 언급</text>
+    <rect class="pill" x="802" y="298" width="128" height="34" rx="8"/><text class="pt" x="866" y="320" text-anchor="middle">새로움 확인</text>
+    <rect class="pill" x="940" y="298" width="116" height="34" rx="8"/><text class="pt" x="998" y="320" text-anchor="middle">후보 제출</text>
+  </g>
+  <line x1="664" y1="354" x2="1056" y2="354" stroke="#262a32"/>
+  <text x="664" y="381" fill="#e8a24a" font-size="13.5">후보 = 발견 경로 + 원문 인용 + 출처 URL</text>
+  <text x="664" y="402" class="l">예산 상한 · 도구 140회 · $0.8 · 20분</text>
+
+  <!-- 검수 -->
+  <rect class="n" x="640" y="470" width="210" height="110" rx="10"/>
+  <text class="t" x="660" y="506">검수 1 · 원문 대조</text>
+  <text class="s" x="660" y="532">캐시 없이 다시 가져와</text>
+  <text class="s" x="660" y="552">글자 그대로 있는지</text>
+
+  <rect class="n" x="870" y="470" width="210" height="110" rx="10"/>
+  <text class="t" x="890" y="506">검수 2 · 판정</text>
+  <text class="s" x="890" y="532">원문만 보고 연결을</text>
+  <text class="s" x="890" y="552">뒷받침하는지</text>
+  <rect x="1014" y="482" width="52" height="20" rx="10" fill="#14281f"/><text x="1040" y="496" text-anchor="middle" class="chip-t" fill="#5fbf8f">LOCAL</text>
+
+  <!-- 산출물 -->
+  <rect class="n" x="1140" y="170" width="400" height="70" rx="10"/>
+  <text class="t" x="1160" y="201">디깅 브리프</text>
+  <text class="s" x="1160" y="223">후보마다 경로 · 인용 · 출처</text>
+
+  <rect class="n" x="1140" y="255" width="400" height="70" rx="10"/>
+  <text class="t" x="1160" y="286">개인 디깅 위키</text>
+  <text class="s" x="1160" y="308">발견 경로와 반응이 쌓이는 지도</text>
+
+  <rect class="n" x="1140" y="340" width="400" height="70" rx="10"/>
+  <text class="t" x="1160" y="371">새 플레이리스트</text>
+  <text class="s" x="1160" y="393">YouTube Music · 기존 목록은 건드리지 않음</text>
+
+  <rect class="n" x="1140" y="470" width="400" height="110" rx="10"/>
+  <text class="t" x="1160" y="506">작성</text>
+  <text class="s" x="1160" y="532">추천 이유 · 곡 선정</text>
+  <text class="s" x="1160" y="552">생성 문장을 원문과 다시 확인</text>
+  <rect x="1474" y="482" width="52" height="20" rx="10" fill="#14281f"/><text x="1500" y="496" text-anchor="middle" class="chip-t" fill="#5fbf8f">LOCAL</text>
+
+  <!-- 아침 -->
+  <rect class="n" x="300" y="690" width="260" height="104" rx="10"/>
+  <text class="t" x="320" y="724">가드레일</text>
+  <text class="s" x="320" y="750">쓰기는 새 플레이리스트만</text>
+  <text class="s" x="320" y="772">모든 호출 감사 로그 · 실패 알림</text>
+
+  <rect class="n" x="640" y="690" width="440" height="104" rx="10"/>
+  <text class="t" x="660" y="724">RAG 색인</text>
+  <text class="s" x="660" y="750">읽은 원문 3.5k 청크</text>
+  <text class="s" x="660" y="772">e5 임베딩 + 한국어 BM25 · RRF 결합</text>
+  <rect x="1012" y="702" width="50" height="20" rx="10" fill="#22252c"/><text x="1037" y="716" text-anchor="middle" class="chip-t" fill="#a3aab6">CODE</text>
+
+  <rect class="n" x="1140" y="690" width="190" height="104" rx="10"/>
+  <text class="t" x="1160" y="724">점원 챗</text>
+  <text class="s" x="1160" y="750">"왜 이걸 골랐어?"</text>
+  <text class="s" x="1160" y="772">원문을 인용해 답</text>
+  <rect x="1264" y="702" width="52" height="20" rx="10" fill="#14281f"/><text x="1290" y="716" text-anchor="middle" class="chip-t" fill="#5fbf8f">LOCAL</text>
+
+  <rect class="n" x="1350" y="690" width="190" height="104" rx="10"/>
+  <text class="t" x="1370" y="724">웹 앱</text>
+  <text class="s" x="1370" y="750">디깅 맵 · LP 슬리브</text>
+  <text class="s" x="1370" y="772">오늘 밤 큐에 담기</text>
+
+  <!-- 연결 -->
+  <path class="e" d="M280 242 H336" marker-end="url(#a)"/>
+  <path class="e" d="M280 372 H310 V262 H336" marker-end="url(#a)"/>
+  <path class="e" d="M450 284 V326" marker-end="url(#a)"/>
+  <path d="M560 372 H636" stroke="#e8a24a" stroke-width="1.6" fill="none" marker-end="url(#ac)"/>
+  <text x="566" y="362" fill="#e8a24a" font-size="11.5">익명</text>
+
+  <path class="e" d="M720 420 V466" marker-end="url(#a)"/>
+  <text x="730" y="449" class="l">제출</text>
+  <path class="e" d="M850 525 H866" marker-end="url(#a)"/>
+  <path class="e" d="M1030 470 V424" stroke-dasharray="4 4" marker-end="url(#a)"/>
+  <text x="1040" y="449" class="l">반려 · 재시도 ≤ 2</text>
+  <path d="M1080 525 H1136" stroke="#e8a24a" stroke-width="1.6" fill="none" marker-end="url(#ac)"/>
+  <text x="1092" y="515" fill="#e8a24a" font-size="11.5">통과</text>
+  <path class="e" d="M1340 470 V414" marker-end="url(#a)"/>
+
+  <path class="e" d="M745 580 V686" stroke-dasharray="4 4" marker-end="url(#a)"/>
+  <text x="755" y="640" class="l">읽은 원문 저장</text>
+  <path class="e" d="M1080 742 H1136" marker-end="url(#a)"/>
+  <path class="e" d="M1330 742 H1346" marker-end="url(#a)"/>
+
+  <path class="e" d="M1445 794 V850 H170 V418" marker-end="url(#a)"/>
+  <text x="808" y="870" text-anchor="middle" class="l">고른 방향이 다음 밤 디깅의 시드로</text>
+</svg>

@@ -38,31 +38,7 @@
 
 ## 2. 아키텍처
 
-```mermaid
-flowchart TD
-    YT[YouTube Music<br/>청취 기록·좋아요] --> SEED[시드 선정<br/>최근 좋아요 + 위키 큐]
-    SEED --> ANON[익명화<br/>로컬 모델]
-    ANON --> R
-
-    subgraph R[리서처 · ReAct 루프]
-        direction LR
-        LLM1[DeepSeek-V4-Pro] <--> TOOLS[도구<br/>MusicBrainz · 웹 검색/원문<br/>평론 후보 · 인터뷰 언급<br/>새로움 확인]
-    end
-
-    R -- 후보 제출 --> V1[검수 1단계 · 코드<br/>원문 재조회 후 글자 대조]
-    V1 -- 통과 --> V2[검수 2단계 · 다른 계열 모델<br/>원문이 연결을 뒷받침하나]
-    V1 -- 반려 + 가장 비슷한 문장 --> R
-    V2 -- 반려 사유 --> R
-    V2 -- 통과 --> W[작성<br/>추천 이유 · 곡 선정]
-    W --> OUT1[디깅 브리프]
-    W --> OUT2[개인 디깅 위키]
-    W --> OUT3[새 비공개 플레이리스트]
-
-    R -. 읽은 원문 저장 .-> RAG[(RAG 색인<br/>e5 임베딩 + 한국어 BM25)]
-    RAG --> CLERK[점원 챗<br/>출처 인용 답변]
-    OUT2 --> UI[웹 앱 · 디깅 맵]
-    CLERK --> UI
-```
+![B-side 아키텍처](docs/architecture.png)
 
 ### 추론: 생성과 검증의 분리
 

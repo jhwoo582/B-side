@@ -155,8 +155,6 @@
 <rect x="1110.5" y="72.5" width="415" height="415" rx="6" fill="none" stroke="#fff" stroke-opacity="0.07"/>
 <rect x="1110" y="72" width="10" height="416" fill="#000" fill-opacity="0.35"/>
 <rect x="0" y="0" width="160" height="560" fill="url(#fadeL)" opacity="0"/>
-<text x="96" y="172" fill="#e8a24a" font-size="17" font-weight="700" letter-spacing="0.12em">B-SIDE, BESIDE YOU</text>
-<text x="92" y="262" fill="#eef0f3" font-size="64" font-weight="800" letter-spacing="-0.035em">좋아하는 음악</text>
-<text x="92" y="340" fill="#eef0f3" font-size="64" font-weight="800" letter-spacing="-0.035em">바로 옆에</text>
-<text x="96" y="398" fill="#8b93a1" font-size="21" font-weight="500">자는 동안 옆에서 같이 파 둘게요. 어디서 찾았는지도 적어서.</text>
+<text x="92" y="262" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">옆에 두는</text>
+<text x="92" y="356" fill="#eef0f3" font-size="76" font-weight="800" letter-spacing="-0.035em">디깅 <tspan fill="#e8a24a">에이전트</tspan></text>
 </svg>

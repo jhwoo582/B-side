@@ -4,6 +4,12 @@
 cd "$(dirname "$0")/.."
 mkdir -p logs
 OUT="logs/nightly-$(date +%F).out"
+# 배터리로 잠든 채 깨면 다크 웨이크 사이사이로만 진행돼 모델 호출이 걸리고 시간 상한에 먼저 걸린다
+# (2026-10-23: 새 아티스트 2명에서 중단). 전원이 연결돼 있을 때만 돌린다.
+if ! pmset -g batt | grep -q "AC Power"; then
+  echo "=== $(date '+%F %T') 건너뜀: 배터리 전원 (충전기를 연결하면 다음 밤에 실행)" >> "$OUT"
+  exit 0
+fi
 {
   echo "=== $(date '+%F %T') 야간 디깅 시작"
   # caffeinate -i: 도는 동안 맥이 잠들면 모델 요청이 끊겨 빈 브리프가 나온다 (2026-10-13 밤)
